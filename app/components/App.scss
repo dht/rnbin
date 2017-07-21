@@ -1,0 +1,22 @@
+.App-container {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  height: 100%;
+
+  .editor-container {
+    flex: 1;
+    position: relative;
+  }
+
+  .beta {
+    position: fixed;
+    top:0;
+    right:0;
+    padding:10px 20px;
+    background-color:darkred;
+    color:white;
+    font-size:18px;
+    z-index: 9999;
+  }
+}

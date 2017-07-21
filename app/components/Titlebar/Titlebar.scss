@@ -1,0 +1,23 @@
+.Titlebar-container {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  padding:0 20px;
+  justify-content: space-between;
+  height:50px;
+
+  span.readonly {
+    font-size:0.8em;
+    color:#ccc;
+    font-style: italic;
+  }
+
+  .drawer-button {
+    right:0;
+    position:relative;
+    width:50px;
+    height:50px;
+    transition: all 0.3s linear;
+    border-radius: 5px;
+  }
+}

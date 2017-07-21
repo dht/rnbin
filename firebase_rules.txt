@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "bins": {
+      "$binId": {
+        ".read": true,
+        ".write": "data.parent().parent().child('permissions').child($binId).child('owner').val() == auth.uid"
+      }
+    },
+    "permissions": {
+      "$binId": {
+        ".read": false,
+        ".write": "!data.exists() && newData.child('owner').val() == auth.uid",
+      }
+    },
+      "users": {
+        "$uid": {
+       		 ".read": "$uid == auth.uid",
+        		".write": "$uid == auth.uid",
+        }
+      }
+  }
+}
