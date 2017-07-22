@@ -5,6 +5,7 @@ export const modalTypes = {
     IMAGER_MODAL: 'IMAGER_MODAL',
     DATA_MODAL: 'DATA_MODAL',
     CONFIRMATION_MODAL: 'CONFIRMATION_MODAL',
+    INSERT_SNIPPET: 'INSERT_SNIPPET',
 }
 
 export const showModal = (modalType, props) => {

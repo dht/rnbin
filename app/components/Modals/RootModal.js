@@ -1,9 +1,9 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {modalTypes} from '../../reducers/modal/modal_actions';
 
 import ImagerModal from './ImagerModal/ImagerModal'
 import DataModal from './DataModal/DataModal'
+import InsertSnippetModal from './InsertSnippetModal/InsertSnippetModal'
 import ConfirmationModal from './ConfirmationModal/ConfirmationModal'
 
 const MODAL_COMPONENTS = (modalType) => {
@@ -18,6 +18,9 @@ const MODAL_COMPONENTS = (modalType) => {
 
         case modalTypes.CONFIRMATION_MODAL:
             return ConfirmationModal;
+
+        case modalTypes.INSERT_SNIPPET:
+            return InsertSnippetModal;
     }
 }
 

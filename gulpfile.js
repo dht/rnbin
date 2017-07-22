@@ -34,7 +34,7 @@ gulp.task('copy', function () {
 
 gulp.task('copyStatic', function () {
     return gulp
-        .src(['app/index.html', '/images/**.*'], {base: './app'})
+        .src(['app/index.html', 'app/images/**.*'], {base: './app'})
         .pipe(gulp.dest('public'));
 });
 

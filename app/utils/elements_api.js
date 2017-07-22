@@ -63,6 +63,10 @@ export const listenToState_adhock = (id, callback) => {
     return listen(_stateRef, callback);
 }
 
+export const stopToListen = (ref, callback) => {
+    return ref.off("value");
+}
+
 export const listenToState = (path, callback) => {
     const _snippetRef = _getSnippetRef(path);
     const _stateRef = _snippetRef.child('workingCopy');

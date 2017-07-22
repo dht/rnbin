@@ -9,6 +9,8 @@ import RootModal from './Modals/RootModalContainer';
 
 import Drawer from 'material-ui-extensions/Drawer';
 
+import {listenToState_adhock, stopToListen} from '../utils/elements_api'
+
 export default class App extends React.Component {
 
     constructor(props) {
@@ -19,6 +21,26 @@ export default class App extends React.Component {
         }
 
         this.openCodeDrawer = this.openCodeDrawer.bind(this);
+    }
+
+    componentWillReceiveProps(props) {
+        const {dataFieldModalOn, showPlaceholderPopover} = props;
+
+        if (this.state.dataFieldModalOn !== dataFieldModalOn) {
+            this.setState({dataFieldModalOn})
+
+            if (dataFieldModalOn) {
+                this.props.showDataFieldModal();
+            }
+        }
+
+        if (this.state.showPlaceholderPopover !== showPlaceholderPopover) {
+            this.setState({showPlaceholderPopover})
+
+            if (showPlaceholderPopover) {
+                this.props.showInsertSnippetModal();
+            }
+        }
     }
 
     openCodeDrawer() {
@@ -56,7 +78,10 @@ export default class App extends React.Component {
                     height={568}
                     readonly={readonly}
                     hideTreeTabs={true}
-                    showDataButtons={false}/>
+                    showDataButtons={false}
+                    subscribe={listenToState_adhock}
+                    unsubscribe={stopToListen}
+                />
 
                 <div style={styles.adhocBar}>
                     <AdhockBar />

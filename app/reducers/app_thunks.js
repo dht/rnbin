@@ -98,18 +98,47 @@ export const showDataFieldModal = () => {
         const {flexState} = getState();
         const selectedElement = getItem(flexState.elements, flexState.elementSelection);
         const {data} = selectedElement || {};
-        const {dataField} = data || {};
 
-        dispatch(showModal(modalTypes.NAME_MODAL, {
-            title: 'Set variable name',
-            hint: 'specify the name of the variable',
-            verb: 'Set variable',
-            defaultValue: dataField || '',
-            ok: (variableName) => {
-                dispatch(flexEditor.setDataField(variableName));
-            },
+        dispatch(showModal(modalTypes.DATA_MODAL, {
+            selectedElement,
+            data,
             handleClose: () => {
+                dispatch(closeModal());
                 dispatch(flexEditor.clearFieldModal());
+            },
+            deleteVar: () => {
+                dispatch(closeModal());
+                dispatch(flexEditor.clearFieldModal());
+                dispatch(flexEditor.setDataField("", ""));
+            },
+            saveVar: (element_id, content, varName, varType) => {
+                dispatch(closeModal());
+                dispatch(flexEditor.clearFieldModal());
+                dispatch(flexEditor.applyData(element_id, {content}));
+                dispatch(flexEditor.setDataField(varName, varType));
+            }
+        }));
+    }
+}
+
+export const showInsertSnippetModal = () => {
+    return (dispatch, getState) => {
+
+        const {flexState} = getState();
+        const selectedElement = getItem(flexState.elements, flexState.elementSelection);
+
+        dispatch(showModal(modalTypes.INSERT_SNIPPET, {
+            selectedElement,
+            handleClose: () => {
+                dispatch(closeModal());
+                dispatch(flexEditor.clearFieldModal());
+            },
+            insertSnippet: (elementId, snippetId) => {
+                dispatch(closeModal());
+               console.log('snippetId -> ', snippetId);
+                dispatch(flexEditor.clearFieldModal());
+                dispatch(flexEditor.addSnippet({snippetId}));
+
             }
         }));
     }

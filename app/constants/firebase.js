@@ -19,7 +19,8 @@ const getRef = (ref) => {
 
 export const listen = (ref, callback) => {
     return ref.on("value", snapshot => {
-        callback.call(this, snapshot.val());
+        const val = snapshot ? snapshot.val() : {};
+        callback.call(this, val, ref);
     })
 }
 
