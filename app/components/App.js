@@ -74,11 +74,11 @@ export default class App extends React.Component {
                 <FlexEditor
                     colors={[]}
                     fonts={[]}
-                    width={320}
-                    height={568}
+                    width={1280}
+                    height={700}
                     readonly={readonly}
                     hideTreeTabs={true}
-                    showDataButtons={false}
+                    showDataButtons={true}
                     subscribe={listenToState_adhock}
                     unsubscribe={stopToListen}
                 />
