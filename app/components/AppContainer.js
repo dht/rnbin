@@ -32,7 +32,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(showDataFieldModal());
 		},
         showInsertSnippetModal: () => {
-			dispatch(showInsertSnippetModal());
+			const {params} = ownProps,
+				{width, height} = params;
+
+			dispatch(showInsertSnippetModal(width, height));
 		},
 	}
 }

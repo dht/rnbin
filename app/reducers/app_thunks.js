@@ -125,6 +125,9 @@ export const showInsertSnippetModal = () => {
     return (dispatch, getState) => {
 
         const {flexState} = getState();
+        const {elementSelection} = flexState;
+        const {rect} = elementSelection;
+
         const selectedElement = getItem(flexState.elements, flexState.elementSelection);
 
         dispatch(showModal(modalTypes.INSERT_SNIPPET, {
@@ -137,11 +140,10 @@ export const showInsertSnippetModal = () => {
                 dispatch(closeModal());
                 dispatch(flexEditor.clearFieldModal());
                 dispatch(flexEditor.addSnippet({snippetId}));
-
             },
             newSnippet: () => {
                 const guid = guid8();
-                window.open(`/#/${guid}`, '_blank');
+                window.open(`/#/${guid}/${rect.width}/${rect.height}`, '_blank');
                 dispatch(flexEditor.addSnippet({guid}));
                 return guid;
             }

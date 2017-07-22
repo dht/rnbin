@@ -17,7 +17,7 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            drawerOpen: true
+            drawerOpen: false
         }
 
         this.openCodeDrawer = this.openCodeDrawer.bind(this);
@@ -53,8 +53,11 @@ export default class App extends React.Component {
     }
 
     render() {
-        const {readonly} = this.props;
+        const {readonly, params} = this.props;
+        const {width = 1280, height = 700} = params;
         const {drawerOpen} = this.state;
+
+        const zoom = Math.min((1000 / width), 1.5);
 
         return <div className="App-container">
             <Drawer
@@ -74,8 +77,9 @@ export default class App extends React.Component {
                 <FlexEditor
                     colors={[]}
                     fonts={[]}
-                    width={1280}
-                    height={700}
+                    width={width}
+                    height={height}
+                    zoom={zoom}
                     readonly={readonly}
                     hideTreeTabs={true}
                     showDataButtons={true}

@@ -46,6 +46,7 @@ const renderStore = () => {
                         routes={[
                             {path: '/', onEnter: onEnter},
                             {path: '/:id', component: App, onEnter: onAdHock},
+                            {path: '/:id/:width/:height', component: App, onEnter: onAdHock},
                         ]}/>
             </Provider>
         </MuiThemeProvider>
