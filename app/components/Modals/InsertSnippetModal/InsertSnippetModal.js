@@ -7,11 +7,11 @@ class InsertSnippet extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-        };
+        this.state = {};
 
         this.insertSnippet = this.insertSnippet.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
+        this.newSnippet = this.newSnippet.bind(this);
     }
 
     componentDidMount() {
@@ -38,9 +38,20 @@ class InsertSnippet extends React.Component {
         this.props.insertSnippet(selectedElement.id, snippetId);
     }
 
+    newSnippet() {
+        const guid = this.props.newSnippet();
+        this.setState({snippetId: guid});
+    }
+
     render() {
 
         const actions = [
+            <FlatButton
+                label="New Snippet"
+                secondary={true}
+                onTouchTap={this.newSnippet}
+            />
+            ,
             <FlatButton
                 label="Cancel"
                 keyboardFocused={true}
