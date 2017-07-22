@@ -135,7 +135,6 @@ export const showInsertSnippetModal = () => {
             },
             insertSnippet: (elementId, snippetId) => {
                 dispatch(closeModal());
-               console.log('snippetId -> ', snippetId);
                 dispatch(flexEditor.clearFieldModal());
                 dispatch(flexEditor.addSnippet({snippetId}));
 
