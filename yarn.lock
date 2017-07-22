@@ -2153,14 +2153,14 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flex-editor@^0.3.12:
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/flex-editor/-/flex-editor-0.3.12.tgz#538c7780ea53aec714dec4d0c3e15d180e428c6b"
+flex-editor@^0.3.16:
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/flex-editor/-/flex-editor-0.3.16.tgz#a30ff55f46f3fa26aad1b1e766700f30604c2958"
   dependencies:
     clone "^2.1.1"
     infinite-surface "^0.0.28"
     insert-css "^2.0.0"
-    lpm-core "^0.1.30"
+    lpm-core "^0.1.32"
     material-ui "^0.17.1"
     material-ui-extensions "^0.0.5"
     project-dashboard "0.0.15"
@@ -3578,9 +3578,9 @@ lpm-core@^0.1.24:
     react-dom "^15.4.1"
     sanitizer "^0.1.3"
 
-lpm-core@^0.1.30:
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/lpm-core/-/lpm-core-0.1.30.tgz#d788a2da436c431c40f2f7aba2303377e86fc424"
+lpm-core@^0.1.32:
+  version "0.1.32"
+  resolved "https://registry.yarnpkg.com/lpm-core/-/lpm-core-0.1.32.tgz#1981f2cbf9d82da00c80b94c46f4c5e91a264429"
   dependencies:
     react "^15.4.1"
     react-dom "^15.4.1"
