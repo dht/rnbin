@@ -5,6 +5,7 @@ import ImagerModal from './ImagerModal/ImagerModal'
 import DataModal from './DataModal/DataModal'
 import InsertSnippetModal from './InsertSnippetModal/InsertSnippetModal'
 import ConfirmationModal from './ConfirmationModal/ConfirmationModal'
+import VariableModal from './VariableModal/VariableModal'
 
 const MODAL_COMPONENTS = (modalType) => {
 
@@ -21,6 +22,9 @@ const MODAL_COMPONENTS = (modalType) => {
 
         case modalTypes.INSERT_SNIPPET:
             return InsertSnippetModal;
+
+        case modalTypes.VARIABLES_MODAL:
+            return VariableModal;
     }
 }
 
