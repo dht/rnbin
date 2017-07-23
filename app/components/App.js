@@ -54,10 +54,10 @@ export default class App extends React.Component {
 
     render() {
         const {readonly, params} = this.props;
-        const {width = 1280, height = 700} = params;
+        const {width = 320, height = 528} = params;
         const {drawerOpen} = this.state;
 
-        const zoom = Math.min((1000 / width), 1.5);
+        const zoom = 1.2;
 
         return <div className="App-container">
             <Drawer

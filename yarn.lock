@@ -2153,9 +2153,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flex-editor@^0.3.19:
-  version "0.3.19"
-  resolved "https://registry.yarnpkg.com/flex-editor/-/flex-editor-0.3.19.tgz#8bbc227763b78a004b1723544caefbdadbd08d65"
+flex-editor@^0.3.22:
+  version "0.3.22"
+  resolved "https://registry.yarnpkg.com/flex-editor/-/flex-editor-0.3.22.tgz#359618b3851e0eb08c3bef62e1955a088da8b006"
   dependencies:
     clone "^2.1.1"
     infinite-surface "^0.0.28"

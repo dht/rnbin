@@ -116,13 +116,13 @@ class DataModal extends React.Component {
                         onKeyDown={this.onKeyDown}
                         onChange={(event, value) => this.setState({content: value})}
                     />
-                    <IconButton
-                        iconClassName="material-icons"
-                        tooltip="HTML editor"
-                        onClick={() => this.setState({showHTMLEditor: true})}
-                    >
-                        edit
-                    </IconButton>
+                    {/*<IconButton*/}
+                        {/*iconClassName="material-icons"*/}
+                        {/*tooltip="HTML editor"*/}
+                        {/*onClick={() => this.setState({showHTMLEditor: true})}*/}
+                    {/*>*/}
+                        {/*edit*/}
+                    {/*</IconButton>*/}
                 </div>
 
                 { this.renderHTMLEditor() }
