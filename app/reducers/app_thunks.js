@@ -142,9 +142,11 @@ export const showInsertSnippetModal = () => {
                 dispatch(flexEditor.addSnippet({snippetId}));
             },
             newSnippet: () => {
-                const guid = guid8();
-                window.open(`/#/${guid}/${rect.width}/${rect.height}`, '_blank');
-                dispatch(flexEditor.addSnippet({guid}));
+                const guid = guid8(),
+                    width = Math.floor(rect.width),
+                    height = Math.floor(rect.height);
+
+                window.open(`/#/${guid}/${width}/${height}`, '_blank');
                 return guid;
             }
         }));
