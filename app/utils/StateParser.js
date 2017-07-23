@@ -154,22 +154,3 @@ export const mergeVariablesIntoState = (state, variables = {}) => {
 }
 
 
-export const collapseResolutionIntoState = (state, resolution) => {
-
-    return Object.keys(state || {}).reduce((output, id) => {
-        const element = {...state[id]},
-			data = {...element.data},
-			vars = {...data.vars};
-
-        element.style = {};
-
-        for (let r = 1; r <= resolution; r++) {
-            element.style = {...element.style, ...vars[`r${r}`]};
-		}
-
-        output[element.id] = element;
-
-        return output;
-    }, {});
-}
-
