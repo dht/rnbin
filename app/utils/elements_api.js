@@ -157,6 +157,13 @@ export const fetchStateByPath = (path) => {
     return getRef(_stateRef);
 }
 
+export const fetchStateBySnippetId = (snippetId) => {
+    const _snippetRef = snippetsAdhocRef.child(snippetId),
+        _stateRef = _snippetRef.child('workingCopy');
+
+    return getRef(_stateRef);
+}
+
 export const fetchOverlays = () => {
 
     return getRef(overlaysRef);

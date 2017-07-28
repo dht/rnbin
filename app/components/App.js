@@ -24,7 +24,7 @@ export default class App extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        const {dataFieldModalOn, showPlaceholderPopover} = props;
+        const {dataFieldModalOn, showPlaceholderPopover, showSnippetPopover} = props;
 
         if (this.state.dataFieldModalOn !== dataFieldModalOn) {
             this.setState({dataFieldModalOn})
@@ -39,6 +39,14 @@ export default class App extends React.Component {
 
             if (showPlaceholderPopover) {
                 this.props.showInsertSnippetModal();
+            }
+        }
+
+        if (this.state.showSnippetPopover !== showSnippetPopover) {
+            this.setState({showSnippetPopover})
+
+            if (showSnippetPopover) {
+                this.props.showVariablesModal();
             }
         }
     }
@@ -97,10 +105,6 @@ export default class App extends React.Component {
 
                 <RootModal />
             </div>
-            <div className="beta">
-                PRE-BETA
-            </div>
-
         </div>
     }
 }

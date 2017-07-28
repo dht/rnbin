@@ -209,20 +209,33 @@ export const clearOverlays = () => {
 export const editVariables = (page, snippet) => {
     return (dispatch, getState) => {
 
-        const {id} = snippet;
+        const {flexState} = getState();
+        const selectedElement = getItem(flexState.elements, flexState.elementSelection),
+            {data} = selectedElement || {},
+            {snippetId, vars} = data || {},
+            {params} = vars || {};
 
         dispatch(showModal(modalTypes.VARIABLES_MODAL, {
-            page,
-            snippet,
-            showImager: () => {
-                dispatch(appStateActions.showImager())
+            snippetId,
+            params,
+            editSnippet:() => {
+                window.open(`#/${snippetId}`, '_blank');
             },
             handleClose: () => {
                 dispatch(closeModal());
+                dispatch(flexEditor.clearFieldModal());
             },
             saveVariables: (variables) => {
                 dispatch(closeModal());
-                dispatch(projectActions.setSnippetContent(page.id, id, variables));
+
+                const params = Object.keys(variables).reduce((output, elementId) => {
+                    const elementVar = variables[elementId];
+                    output[elementVar.dataField] = elementVar.content;
+                    return output;
+                }, {});
+
+                dispatch(flexEditor.applyVars(selectedElement.id, 'params', params));
+                dispatch(flexEditor.clearFieldModal());
             }
         }));
 

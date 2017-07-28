@@ -3,7 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
-import {fetchStateByPath} from '../../../utils/elements_api';
+import {fetchStateBySnippetId} from '../../../utils/elements_api';
 import {firebaseStateToState, variablesArrayToObject} from '../../../utils/StateParser';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
@@ -21,9 +21,9 @@ class VariableModal extends React.Component {
     }
 
     componentDidMount() {
-        const {snippet} = this.props;
+        const {snippetId} = this.props;
 
-        fetchStateByPath(snippet.path).then((state) => {
+        fetchStateBySnippetId(snippetId).then((state) => {
             state = firebaseStateToState(state);
             this.parseState(state)
         });
@@ -40,21 +40,19 @@ class VariableModal extends React.Component {
     }
 
     parseState(state) {
-        const {snippet} = this.props,
-            variables_saved = snippet.variables || {};
+        const {params = {}} = this.props;
 
         const variables = Object.keys(state).map(id => {
             const element = state[id];
-            const variable = variables_saved[id] || {};
-            const dataObject = {...element.data, ...variable};
-            const {content = '', dataField = '', dataFieldType = ''} = dataObject;
+            const {content = '', dataField = '', dataFieldType = ''} = element.data || {};
+            const param = params[dataField] || '';
 
             if (dataField && dataFieldType) {
                 return {
                     id,
                     dataField,
                     dataFieldType,
-                    content
+                    content: param || content
                 }
             } else {
                 return null;
@@ -164,12 +162,15 @@ class VariableModal extends React.Component {
     }
 
     render() {
-        const {snippet} = this.props,
-            {path = '', id} = snippet;
-
-        const name = path.split('.').pop();
+        const {snippetId} = this.props;
 
         const actions = [
+            <FlatButton
+                label="Edit snippet"
+                secondary={true}
+                keyboardFocused={true}
+                onTouchTap={this.props.editSnippet}
+            />,
             <FlatButton
                 label="Cancel"
                 keyboardFocused={true}
@@ -187,11 +188,12 @@ class VariableModal extends React.Component {
         return (
             <Dialog
                 contentStyle={ styles.dialog }
-                title={`${id}. ${name}`}
+                title={'Snippet parameters'}
                 actions={actions}
                 modal={false}
                 open={ true }
                 onRequestClose={this.props.handleClose}>
+                <span style={ styles.span }>(id: {snippetId})</span>
                 {
                     this.renderVariables()
                 }
@@ -211,6 +213,13 @@ const styles = {
         height: '100px',
         position: 'relative',
         fontSize: '18px',
+        textAlign: 'center',
+    },
+    span: {
+        position: 'relative',
+        fontSize: '14px',
+        color:'#bbb',
+        top:'-3px',
         textAlign: 'center',
     }
 };

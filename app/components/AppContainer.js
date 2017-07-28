@@ -1,19 +1,20 @@
 import { connect } from 'react-redux'
 import App from './App'
 import flexEditor from 'flex-editor';
-import {showDataFieldModal, showInsertSnippetModal} from '../reducers/app_thunks';
+import {showDataFieldModal, showInsertSnippetModal, editVariables} from '../reducers/app_thunks';
 
 const mapStateToProps = (state, ownProps) => {
 
 	const {flexState} = state,
 		{appState} = flexState,
-		{dataFieldModalOn, showPlaceholderPopover} = appState,
+		{dataFieldModalOn, showPlaceholderPopover, showSnippetPopover,} = appState,
 		{readonly} = state.appState;
 
 	return {
 		readonly,
         dataFieldModalOn,
 		showPlaceholderPopover,
+        showSnippetPopover,
 	}
 }
 
@@ -37,6 +38,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 			dispatch(showInsertSnippetModal(width, height));
 		},
+        showVariablesModal: () => {
+            dispatch(editVariables());
+        }
 	}
 }
 
