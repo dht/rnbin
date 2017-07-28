@@ -1,9 +1,31 @@
+const EDITOR_MODES = {
+    mobile: 'mobile',
+    dashboard: 'dashboard',
+    responsive: 'responsive',
+};
+
+const CODE_MODES = {
+    react_native: 'react_native',
+    react: 'react',
+    HTML: 'HTML',
+};
+
+const GRID_MODES = {
+    none: 'none',
+    bootstrap3: 'bootstrap3',
+    foundation: 'foundation',
+    flex: 'flex',
+}
+
 const initialState = {
     isAdhoc: true,
     isLoadedSnippet: false,
     user_id: '',
     readonly: true,
     snippet_id: '',
+    editorMode: EDITOR_MODES.mobile,
+    codeMode: CODE_MODES.react,
+    gridMode: GRID_MODES.none,
 };
 
 export const ActionTypes = {
@@ -40,7 +62,7 @@ export const appState = (state = initialState, action) => {
                 readonly: action.value
             }
 
-            case ActionTypes.SET_SNIPPET_ID:
+        case ActionTypes.SET_SNIPPET_ID:
             return {
                 ...state,
                 snippet_id: action.value
