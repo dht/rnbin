@@ -1,7 +1,9 @@
 import {connect} from 'react-redux'
 import CodeEditor from './CodeEditor'
 
-import {format} from 'lpm-transpilers/transpilers/reactNative/parse';
+import {format as formatRN} from 'lpm-transpilers/transpilers/reactNative/parse';
+// import parseWeb from 'lpm-transpilers/transpilers/web/parse';
+
 import clone from 'clone';
 
 const mapStateToProps = (state, ownProps) => {
@@ -9,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
         {elements} = flexState,
         {present} = elements;
 
-    const code = format(clone(present), 1, 'Layout');
+    const code = formatRN(clone(present), 1, 'Layout');
 
     return {
         code,
